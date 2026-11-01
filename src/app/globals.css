@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* 다크 모드는 <html class="dark">로 제어합니다 (ThemeToggle 참고) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+body {
+  @apply bg-zinc-100 font-sans text-zinc-900 transition-colors dark:bg-zinc-950 dark:text-zinc-100;
+}
