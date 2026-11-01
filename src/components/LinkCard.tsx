@@ -18,7 +18,20 @@ export default function LinkCard({ link }: { link: LinkItem }) {
       rel="noopener noreferrer"
       onClick={() => trackClick(link.id)}
       onAuxClick={(e) => e.button === 1 && trackClick(link.id)}
-      className="block w-full rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-center font-medium shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 dark:border-zinc-700 dark:bg-zinc-900"
+      className={[
+        "group relative block w-full rounded-[1.375rem] px-6 py-[1.125rem] text-center text-[15px] font-semibold tracking-[-0.01em]",
+        // 글래스모피즘: 반투명 배경 + 흐림 + 얇은 밝은 테두리 + 위쪽 하이라이트
+        "border border-white/70 bg-white/45 backdrop-blur-xl backdrop-saturate-150",
+        "shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_10px_30px_-14px_rgba(120,70,40,0.28)]",
+        "dark:border-white/10 dark:bg-white/[0.06] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_30px_-14px_rgba(0,0,0,0.6)]",
+        // 절제된 호버: 살짝 밝아지고 1px 떠오름
+        "transition-[transform,background-color,box-shadow] duration-300 ease-out",
+        "hover:-translate-y-px hover:bg-white/60 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_14px_34px_-14px_rgba(120,70,40,0.34)]",
+        "dark:hover:bg-white/[0.09]",
+        "active:translate-y-0 active:duration-100",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500/70",
+        "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
+      ].join(" ")}
     >
       {link.title}
     </a>

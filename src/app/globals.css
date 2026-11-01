@@ -4,9 +4,40 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --font-sans: var(--font-geist-sans), "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
 }
 
 body {
-  @apply bg-zinc-100 font-sans text-zinc-900 transition-colors dark:bg-zinc-950 dark:text-zinc-100;
+  @apply font-sans text-stone-800 transition-colors duration-500 dark:text-stone-100;
+  background-color: #fdf6ee;
+  word-break: keep-all;
+}
+
+.dark body {
+  background-color: #1a1412;
+}
+
+/* 따뜻한 그라데이션 배경. 스크롤해도 고정되도록 별도 레이어로 깝니다
+   (iOS Safari는 background-attachment: fixed를 지원하지 않음). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 15% 0%, #ffe1c7 0%, transparent 70%),
+    radial-gradient(55% 40% at 100% 20%, #ffd6d6 0%, transparent 70%),
+    radial-gradient(70% 50% at 50% 100%, #fff0c9 0%, transparent 70%),
+    linear-gradient(180deg, #fdf3ea 0%, #fbeee6 100%);
+  transition: opacity 0.5s;
+}
+
+.dark body::before {
+  background:
+    radial-gradient(60% 45% at 15% 0%, #4a2a1c 0%, transparent 70%),
+    radial-gradient(55% 40% at 100% 20%, #43202a 0%, transparent 70%),
+    radial-gradient(70% 50% at 50% 100%, #3a2a14 0%, transparent 70%),
+    linear-gradient(180deg, #1c1513 0%, #161110 100%);
 }

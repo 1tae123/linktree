@@ -1,12 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
 import { profile } from "@/data/profile";
+// Pretendard: 한글·영문 모두 둥글고 단정한 산세리프. 글자 범위별로 쪼개진 파일이라 필요한 부분만 내려받습니다.
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: `${profile.name} | 링크나무`,
@@ -15,8 +11,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f4f5" },
-    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+    { media: "(prefers-color-scheme: light)", color: "#fdf3ea" },
+    { media: "(prefers-color-scheme: dark)", color: "#1c1513" },
   ],
 };
 
@@ -26,7 +22,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t===
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ko" suppressHydrationWarning className={`${geistSans.variable} h-full antialiased`}>
+    <html lang="ko" suppressHydrationWarning className="h-full antialiased">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

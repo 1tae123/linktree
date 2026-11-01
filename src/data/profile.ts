@@ -14,9 +14,9 @@ export type Profile = {
 };
 
 export const profile: Profile = {
-  name: "홍길동",
-  bio: "동에 번쩍 서에 번쩍",
-  image: "/profile.svg",
+  name: "최원태",
+  bio: "AI 매드 사이언티스트가 되고픈 직딩",
+  image: "/profile.jpg",
   links: [
     { id: "instagram", title: "Instagram", url: "https://instagram.com/" },
     { id: "github", title: "GitHub", url: "https://github.com/" },
